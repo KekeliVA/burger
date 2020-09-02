@@ -4,7 +4,8 @@
   "description": "* This is a restaurant app that allows users to input the name of burgers they would like to eat\r * When the user submits the burger's name the app will display the burger on\r the left side of the webpage \"waiting to be devoured\"\r * When the user clicks \"devour\" the burger will move to the right side of the screen, into the \"devoured\" column\r * Burgers will be stored into a database",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
