@@ -1,12 +1,69 @@
 const connection = require("./connection");
 
-const orm = {
-  selectAll: (cb) => {
-    connection.query("SELECT * FROM burgers_db", (err, data) => {
-      if (err) cb(err, null);
-      cb(null, data);
-    })
+function printQuestionMarks(num) {
+  let arr = [];
+
+  for (let i = 0; i < num ; i++) {
+    arr.push("?")
   }
+  return arr.toString();
 }
 
+// Helper function to convert key value pairs to SQL syntax
+function objToSql(obj) {
+  let arr = [];
+
+  for (let key in obj) {
+    let value = obj[key];
+    if (Object.hasOwnProperty.call(ob, key)) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
+      }
+      arr.push(key + "=" + value);
+    }
+  }
+  return arr.toString();
+}
+
+// Object for all sql functions
+const orm = {
+  selectAll: (tableInput, cb) => {
+    let queryString = "SELECT * FROM " + tableInput + ";"
+    connection.query(queryString, (err, res) => {
+      if (err) throw err; 
+      cb(res);
+    })
+  },
+  insertOne: (table, cols, vals, cb) => {
+    let queryString = "INSERT INTO " + table;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += printQuestionMarks(vals.length);
+    queryString += ") ";
+
+    console.log(queryString);
+
+    connection.query(queryString, vals, (err, res) => {
+      if (err) throw err;
+      cb(res);
+    });
+  },
+  updateOne: (table, objColVals, condition, cb) => {
+    let queryString = "UPDATE " + table;
+
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
+
+    console.log(queryString);
+    connection.query(queryString, (err, res) => {
+      if (err) throw err;
+      cb(res);
+    });
+  }
+  
+}
 module.exports = orm;
