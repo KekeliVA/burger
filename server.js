@@ -10,11 +10,11 @@ app.set("view engine", "handlebars");
 
 // Middleware
 app.use(express.static("public"));
-app.use(exphbs);
-app.use(express.urlencoded({ extended: true}));
+//app.use(express.urlencoded({ extended: true}));
 app.use(express.json()); 
 
 app.use("/", router);
+
 
 
 // Listen to the port

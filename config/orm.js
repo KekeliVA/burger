@@ -28,6 +28,7 @@ function objToSql(obj) {
 // Object for all sql functions
 const orm = {
   selectAll: (tableInput, cb) => {
+    console.log(tableInput);
     let queryString = "SELECT * FROM " + tableInput + ";"
     connection.query(queryString, (err, res) => {
       if (err) throw err; 
@@ -47,7 +48,7 @@ const orm = {
 
     connection.query(queryString, vals, (err, res) => {
       if (err) throw err;
-      cb(res);
+      cb(res.insertId);
     });
   },
   updateOne: (table, objColVals, condition, cb) => {
@@ -63,7 +64,6 @@ const orm = {
       if (err) throw err;
       cb(res);
     });
-  }
-  
+  }  
 }
 module.exports = orm;

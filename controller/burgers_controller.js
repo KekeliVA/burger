@@ -1,10 +1,38 @@
 const express = require("express");
 const router = express.Router();
 const orm = require("../config/orm");
+const burgers = require("../model/burger");
 
 
 router.get("/", (req, res) => {
-    res.render("index")
+    burgers.selectAll((data) => {
+      let hbsObject = {
+        burgers: data
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    })
 });
+
+// when my ajax call happens in the front end logic, it must have a property called burgerName
+router.post("/api/burger", (req, res) => {
+  burgers.insertOne(["burger_name", "devoured"], [req.body.burgerName, false], (result) => {
+    res.json(result);
+  });
+});
+
+router.put("/api/editburger/:id", (req, res) => {
+  let condition = "id = " + req.params.id;
+  console.log("condition: " + condition);
+
+  // need to figure out how to send the proper body this request is expecting in postman
+  burgers.updateOne({
+    devoured: req.body.devoured
+  }, condition, (result) => {
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    }
+  })
+})
 
 module.exports = router;
