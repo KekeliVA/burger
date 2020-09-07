@@ -30,9 +30,14 @@ router.put("/api/editburger/:id", (req, res) => {
     devoured: req.body.devoured
   }, condition, (result) => {
     if (result.changedRows == 0) {
-      return res.status(404).end();
+      res.status(404).end();
+    } else {
+      res.json(result);
     }
   })
 })
 
 module.exports = router;
+
+// when testing in postman, why doesn't the json object need the parameters of updateOne
+// all I needed was my condition, is it because that is what my controller needs?
