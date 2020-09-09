@@ -1,17 +1,22 @@
-$("#submit-button").on("click", () => {
+$("#submit-button").on("click", (event) => {
   event.preventDefault();
-  const burger_name = $("new-burger").val();
+  const burger_name = $("#new-burger").val();
+  console.log(burger_name);
 
   $.ajax({
-    url: "/add",
+    url: "/api/burger",
     method: "POST",
-    data: {
-      burger_name: burgerName
-    }
+    data: JSON.stringify({
+      burger_name: burger_name
+    }),
+    dataType: "json",
+    contentType: "application/json; charset=utf-8" 
   }).then(() => {
-      alert("burger added");
+      console.log("burger added");
   })
   .catch(() => {
-      alert("burger could not be added");
+      console.log("burger could not be added");
   });
 });
+
+// how to make an ajax call send json

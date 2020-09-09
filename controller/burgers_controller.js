@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 
 // when my ajax call happens in the front end logic, it must have a property called burgerName
 router.post("/api/burger", (req, res) => {
-  burgers.insertOne(["burger_name", "devoured"], [req.body.burgerName, false], (result) => {
+  burgers.insertOne(["burger_name", "devoured"], [req.body.burger_name, false], (result) => {
     res.json(result);
   });
 });
