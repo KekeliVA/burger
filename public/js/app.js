@@ -23,6 +23,7 @@ $("#submit-button").on("click", (event) => {
 $(".devour-button").on("click", (event) => {
   event.preventDefault();
   const id = $(this).attr("data-id");
+  console.log(id);
   
   $.ajax({
     url: "/api/editburger/" + id,
