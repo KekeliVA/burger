@@ -20,7 +20,7 @@ $("#submit-button").on("click", (event) => {
 });
 
 
-$(".devour-button").on("click", (event) => {
+$(".devour-button").on("click", function (event) {
   event.preventDefault();
   const id = $(this).attr("data-id");
   console.log(id);

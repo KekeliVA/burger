@@ -24,6 +24,12 @@
         <button type="button" class="btn btn-primary devour-button" data-id="{{id}}" data-state="{{devoured}}">Devour</button>
       </div>
     {{/each}}
+
+    {{#if burgers.devoured}}
+      <div class="devoured-burger-list">
+        <p>{{burger_name}}</p>
+      </div>
+    {{/if}}
   </div>
    <script src="/js/app.js"></script>
 </body>
