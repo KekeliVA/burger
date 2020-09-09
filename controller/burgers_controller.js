@@ -25,7 +25,6 @@ router.put("/api/editburger/:id", (req, res) => {
   let condition = "id = " + req.params.id;
   console.log("condition: " + condition);
 
-  // need to figure out how to send the proper body this request is expecting in postman
   burgers.updateOne({
     devoured: req.body.devoured
   }, condition, (result) => {

@@ -19,4 +19,21 @@ $("#submit-button").on("click", (event) => {
   });
 });
 
-// how to make an ajax call send json
+
+$("#devour-button").on("click", (event) => {
+  event.preventDefault();
+  
+  $.ajax({
+    url: "/api/editburger/:id",
+    method: "PUT",
+    data: JSON.stringify({
+      devoured: 1
+    }),
+    dataType: "json",
+    contentType: "application/json; charset=utf-8"
+  }).then(() => {
+      console.log("burger devoured")
+  }).catch(() => {
+      console.log("burger could not be devoured")
+  })
+})
