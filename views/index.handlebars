@@ -19,17 +19,21 @@
       <button type="submit" id="submit-button">Submit</button>
     </form>
     {{#each burgers}}
+      {{#unless devoured}}
       <div class="burger-list">
         <p>{{burger_name}}</p>
         <button type="button" class="btn btn-primary devour-button" data-id="{{id}}" data-state="{{devoured}}">Devour</button>
       </div>
+      {{/unless}}
     {{/each}}
 
-    {{#if burgers.devoured}}
+    {{#each burgers}}
+      {{#if devoured}}
       <div class="devoured-burger-list">
         <p>{{burger_name}}</p>
       </div>
-    {{/if}}
+      {{/if}}
+    {{/each}}
   </div>
    <script src="/js/app.js"></script>
 </body>
