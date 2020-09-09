@@ -20,11 +20,12 @@ $("#submit-button").on("click", (event) => {
 });
 
 
-$("#devour-button").on("click", (event) => {
+$(".devour-button").on("click", (event) => {
   event.preventDefault();
+  const id = $(this).attr("data-id");
   
   $.ajax({
-    url: "/api/editburger/:id",
+    url: "/api/editburger/" + id,
     method: "PUT",
     data: JSON.stringify({
       devoured: 1
@@ -37,3 +38,4 @@ $("#devour-button").on("click", (event) => {
       console.log("burger could not be devoured")
   })
 })
+
