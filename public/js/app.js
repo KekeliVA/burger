@@ -13,6 +13,7 @@ $("#submit-button").on("click", (event) => {
     contentType: "application/json; charset=utf-8" 
   }).then(() => {
       console.log("burger added");
+      location.reload();
   })
   .catch(() => {
       console.log("burger could not be added");
@@ -34,9 +35,10 @@ $(".devour-button").on("click", function (event) {
     dataType: "json",
     contentType: "application/json; charset=utf-8"
   }).then(() => {
-      console.log("burger devoured")
+      console.log("burger devoured");
   }).catch(() => {
       console.log("burger could not be devoured")
-  })
+  }); 
+  location.reload();
 })
 

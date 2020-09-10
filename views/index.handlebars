@@ -7,34 +7,50 @@
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
   crossorigin="anonymous">
+  <link rel="stylesheet" href="../public/css/style.css">
  
   <title>Burgie</title>
 </head>
 <body>
+  <div class="jumbotron">
+    <h1 class="display-4">Eat the Burger</h1>
+    <p class="lead">This is an app taking advantage of the MVC paradigm to allow you to input burgers to eat and "devour" them.</p>
+    <hr class="my-4">
+  </div>
 
   <div class="container">
-  This is from my index.
-    <form>
-      <input type="text" id="new-burger" placeholder="Add a burger"></input> 
-      <button type="submit" id="submit-button">Submit</button>
-    </form>
-    {{#each burgers}}
-      {{#unless devoured}}
-      <div class="burger-list">
-        <p>{{burger_name}}</p>
-        <button type="button" class="btn btn-primary devour-button" data-id="{{id}}" data-state="{{devoured}}">Devour</button>
+    <div class="row">      
+      <div class="col-md-12 my-form" align="center">
+        <form>
+          <input type="text" id="new-burger" placeholder="Add a burger"></input> 
+          <button type="submit" id="submit-button">Submit</button>
+        </form>
       </div>
-      {{/unless}}
-    {{/each}}
+    </div> {{! closing of the row which contains our form, should be centered}}
 
-    {{#each burgers}}
-      {{#if devoured}}
-      <div class="devoured-burger-list">
-        <p>{{burger_name}}</p>
-      </div>
-      {{/if}}
-    {{/each}}
-  </div>
+    <div class="row">
+      <div class="col-lg-6 new-burger-col">
+        {{#each burgers}}
+          {{#unless devoured}}
+          <div class="burger-list">
+            <p>{{burger_name}}</p>
+            <button type="button" class="btn btn-primary devour-button" data-id="{{id}}" data-state="{{devoured}}">Devour</button>
+          </div>
+          {{/unless}}
+        {{/each}}
+      </div> {{! closing the column}}
+
+      <div class ="col-lg-6 devoured-burger-col">
+        {{#each burgers}}
+          {{#if devoured}}
+          <div class="devoured-burger-list">
+            <p>{{burger_name}}</p>
+          </div>
+          {{/if}}
+        {{/each}}
+      </div> {{! closing of the column}}
+    </div> {{! closing of the row}}
+  </div> {{! closing of the container}}
    <script src="/js/app.js"></script>
 </body>
 </html>

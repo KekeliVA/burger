@@ -1,0 +1,10 @@
+/* Firstly, I want the search button to be centered */
+.my-form {
+  margin: 15px;
+}
+/* Secondly, the new burgers column needs to be to the left half of the container*/
+.new-burger-col {
+  margin-top: 1.5em;
+  background-color: cyan;
+}
+/* Lastly, the devoured burgers column should be to the right half of the container*/
