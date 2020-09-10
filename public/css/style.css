@@ -5,6 +5,11 @@
 /* Secondly, the new burgers column needs to be to the left half of the container*/
 .new-burger-col {
   margin-top: 1.5em;
-  background-color: cyan;
+  border-style: solid;
 }
 /* Lastly, the devoured burgers column should be to the right half of the container*/
+.devoured-burger-col {
+  margin-top: 1.5em;
+  border-style: solid;
+}
+

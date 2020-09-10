@@ -5,3 +5,5 @@
 the left side of the webpage "waiting to be devoured"
 * When the user clicks "devour" the burger will move to the right side of the screen, into the "devoured" column
 * Burgers will be stored into a database
+
+![](public/images/burger_hw.PNG)
